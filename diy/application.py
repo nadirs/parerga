@@ -7,7 +7,8 @@ from config import *
 import utils
 import db
 
-app = Flask(__name__, template_folder=PARERGA_TEMPLATE_DIR)
+application = Flask(__name__, template_folder=PARERGA_TEMPLATE_DIR)
+app = application
 app.debug = True
 
 # db managing functions

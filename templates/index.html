@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block container %}
-<section id="content">
-{{ article_h1("Index")}}
-{% for post in posts|reverse %}
-    {{ preview_post_short(post) }}
-{% endfor %}
-</section>
-{% endblock %}
