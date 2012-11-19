@@ -30,13 +30,6 @@
 /* end of reset */
 /* custom fonts */
 @font-face {
-    font-family: "Garamond Pro";
-    font-style: normal;
-    font-weight: normal;
-    src: url("type/Garamond Pro.ttf") format("truetype");
-}
-
-@font-face {
     font-family: "Fontin";
     font-style: normal;
     font-weight: normal;
