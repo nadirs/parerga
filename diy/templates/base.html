@@ -1,9 +1,16 @@
-{% macro article_h1(name, link='') -%}
+{# ---------------------------- MACROS ------------------------------------ #}
+{%- macro word_first_char_red(word, size='121%') -%}
+<span class="first_char" style="font-size:{{size}};">{{ word[0] }}</span>{{ word[1:] }}
+{%- endmacro -%}
+{%- macro article_h1(name, link='') -%}
 {% set slug_title = slugify(name) %}
 <h1 class="textshadowlight">
-    {% if link %}<a id="{{ slug_title }}" href="{{ link }}#{{ slug_title }}">{% endif %}{{ name }}{% if link %}</a>{% endif %}
+    {% if link %}
+    <a id="{{ slug_title }}" href="{{ link }}#{{ slug_title }}">
+    {% endif %}
+    {{ word_first_char_red(name) }}{% if link %}</a>{% endif %}
 </h1>
-{%- endmacro %}
+{%- endmacro -%}
 {%- macro preview_post_short(post, tags_without_link=[]) -%}
     <h3 class="textshadowlight"><a href="/{{ post.id}}/">{{ post.title }}</a></h3>
     <div><sup>
@@ -17,13 +24,13 @@
     {{ post.short_content_html }}
     <section class="link_more"><a href="/{{ post.id}}/">more...</a></section>
 {%- endmacro -%}
-{% set sitename = "Parerga" %}
+{# ---------------------------- END MACROS -------------------------------- #}
+{%- set sitename = "Parerga" -%}
 <!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="{{sitename}}, a blog about learning software craftmanship"/>
-    <meta name="google-site-verification" content="7yA0f1sLgXjk8IFijWzDwANVtKYcZyfKvINWE5GKJyw" />
     <title>{% block title -%}{{ sitename }}{%- endblock %}</title>
     <!--[ don't use CSS until HTML is complete]-->
     <link rel="stylesheet" href={{ url_for("static", filename="style.css") }} />
@@ -37,9 +44,11 @@
 <body>
     <section id="wrapper" class="shadow">
     <header>
-    <div class="center">
-        <a href="/"><img id="logo" alt="Parerga" src="{{ url_for("static", filename="logo-wide.png") }}" /></a>
-    </div>
+        <section class="center" id="logo">
+        <a href="/">
+            {{ word_first_char_red('Parerga', '80px') }}
+        </a>
+        </section>
         {% block header %}
         <nav class="index">
         <ul>

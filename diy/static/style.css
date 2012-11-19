@@ -87,7 +87,7 @@ h2, h3 {
 }
 
 html {
-    background-color: #ddd;
+    background-color: #d6d8d0;
 }
 
 img {
@@ -110,8 +110,8 @@ img {
 /* CSS3 elements */
 
 nav.index{
+    background-color: #e0e0c8;/*#e6e6d4;*/
     margin: auto;
-    width: 500px;
 }
 
 nav li {
@@ -179,7 +179,7 @@ code {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Fontin, LinLibertine, Courier;
+    font-family: Fontin, LinLibertine, Georgia;
     text-shadow: 2px 2px #bbc;
 }
 
@@ -243,6 +243,18 @@ ul {
 
 /* IDs */
 #logo {
+    background-color: #d0d0c0;
+    color: #111;
+    font-family: LinLibertine;
+    font-size: 72px;
+    font-style: italic;
+    margin: auto;
+    padding-bottom: 14px;
+}
+
+#logo a {
+    text-decoration: none;
+    text-shadow: 1px 0px #887;
 }
 
 /* Classes*/
@@ -254,40 +266,39 @@ ul {
 }
 
 .button {
-    background-color: #dde;
-    border: 1px solid #bbf;
-    color: #123;
+/*    border: 1px solid #111; */
+    color: #222;
     display: inline-block;
-    padding: 2px 10px 2px 10px;
+    font-family: Fontin;
+    padding: 4px 4px 2px 4px;
     text-decoration: none;
     text-align: center;
     text-shadow: 1px 1px #bbb;
     width: 50px;
-/* CSS3 round borders */
-    -moz-radius: 6px 6px;
-    -webkit-border-radius: 6px 6px;
-    border-radius: 6px 6px;
 }
 
 .button:hover {
-    background-color: #eee;
-    border-color: #6af;
-    color: #222;
-    text-decoration: none;
+    color: #811;
 }
 
 .button:active {
-    color: #013;
+    color: #221;
 }
 
 .center {
     text-align: center;
 }
 
+.first_char {
+    color: #811;
+    font-size: 121%;
+    font-weight: bold;
+}
+
 .shadow {
-    -webkit-box-shadow: 0px 0px 5px 4px #ccc;
-    -moz-box-shadow:    0px 0px 5px 4px #ccc;
-    box-shadow:         0px 0px 5px 4px #ccc;
+    -webkit-box-shadow: 0px 0px 5px 4px #bbb;
+    -moz-box-shadow:    0px 0px 5px 4px #bbb;
+    box-shadow:         0px 0px 5px 4px #bbb;
 }
 
 .boxshadow {
@@ -325,8 +336,8 @@ ul {
 }
 
 .toc {
-    background-color: #dde;
-    border: 1px solid #8af;
+    background-color: #e8e8d8;
+    border: 1px solid #d4d4c0;
     color: #120;
     display: inline-block;
     font-size: 12px;
