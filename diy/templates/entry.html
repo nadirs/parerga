@@ -14,4 +14,15 @@
         </sup></section>
     {{ post.content_html }}
     </section>
+    <div id="disqus_thread" style="background-color:rgba(200,200,200,.2);border:1px solid rgba(0,0,0,.2);border-radius:4px;padding:20px;margin:auto;width:400px;"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'parerga';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 {% endblock %}
