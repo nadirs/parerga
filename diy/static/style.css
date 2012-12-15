@@ -159,7 +159,7 @@ a {
     color: inherit;
     text-decoration: none;
     text-decoration-color: #811;
-    text-shadow: 1px 1px #ccc;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 a:hover {
@@ -180,7 +180,7 @@ code {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: Fontin, LinLibertine, Georgia;
-    text-shadow: 2px 2px #bbc;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
@@ -242,6 +242,14 @@ ul {
 }
 
 /* IDs */
+
+#content img {
+/* boxshadow */
+    -webkit-box-shadow:5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
 #logo {
     background-color: #d0d0c0;
     color: #111;
@@ -254,7 +262,7 @@ ul {
 
 #logo a {
     text-decoration: none;
-    text-shadow: 1px 0px #887;
+    text-shadow: 1px 0px rgba(0, 0, 0, 0.2);
 }
 
 /* Classes*/
@@ -273,7 +281,7 @@ ul {
     padding: 4px 4px 2px 4px;
     text-decoration: none;
     text-align: center;
-    text-shadow: 1px 1px #bbb;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
     width: 50px;
 }
 
@@ -296,15 +304,9 @@ ul {
 }
 
 .shadow {
-    -webkit-box-shadow: 0px 0px 5px 4px #bbb;
-    -moz-box-shadow:    0px 0px 5px 4px #bbb;
-    box-shadow:         0px 0px 5px 4px #bbb;
-}
-
-.boxshadow {
-    -webkit-box-shadow:5px 5px 5px 0px #777;
-    -moz-box-shadow: 5px 5px 5px 0px #777;
-    box-shadow: 5px 5px 5px 0px #777;
+    -webkit-box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow:    0px 0px 5px 4px rgba(0, 0, 0, 0.2);
+    box-shadow:         0px 0px 5px 4px rgba(0, 0, 0, 0.2);
 }
 
 .link_more {
@@ -321,12 +323,12 @@ ul {
 }
 
 .textshadowlight {
-    text-shadow: 2px 2px #aab;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .textshadowlight a {
     color: inherit;
-    text-shadow: 2px 2px #aab;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .textshadowlight a:hover {
@@ -362,7 +364,7 @@ ul {
 
 .toclink {
     color: inherit;
-    text-shadow: 2px 2px #aab;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .toclink:hover {
