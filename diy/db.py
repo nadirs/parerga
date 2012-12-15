@@ -32,6 +32,9 @@ def add_entry(path):
         if fname:
             newpath = os.path.join(PARERGA_ENTRY_DIR, fname)
             os.system('cp {} {}'.format(path, newpath))
+        else:
+            print("File name is missing or invalid. Please check the file path.")
+            sys.exit(-1);
     date_added = time.time()
     query = 'INSERT INTO entries(path, date_added) VALUES(?, ?)'
     with connect_db() as temp_db:
