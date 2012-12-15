@@ -250,6 +250,15 @@ ul {
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
+#disqus_thread {
+    background-color: rgba(200, 200, 200, .2);
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 4px;
+    margin: auto;
+    padding: 20px;
+    width: 400px;
+}
+
 #logo {
     background-color: #d0d0c0;
     color: #111;
