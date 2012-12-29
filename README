@@ -1,3 +1,30 @@
+INDEX
+
+ - the actual website
+ - website source code
+ - blog content
+ - OpenShift guidelines
+
+
+* THE ACTUAL WEBSITE *
+The website is currently hosted on RedHat's Openshift cloud.
+ → http://parerga-nadir.rhcloud.com
+
+* WEBSITE SOURCE CODE *
+The source code is distributed under a BSD 3-Clause license. You should have
+received a copy of the license. The full content of the license is accessible at
+http://opensource.org/licenses/BSD-3-Clause.
+
+
+* BLOG CONTENT *
+The content of the blog (entries posted by me) are distributed under a
+Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+The full content of the license is accessible at
+http://creativecommons.org/licenses/by-nc-sa/3.0/.
+
+
+* OPENSHIFT GUIDELINES *
+
 Feel free to change or remove this file, it is informational only.
 
 Get started
