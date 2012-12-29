@@ -3,10 +3,10 @@ import db
 import markdown
 from flask import Markup
 
+# Snippet borrowed from: http://flask.pocoo.org/snippets/5/
 _punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
 
 
-# From: http://flask.pocoo.org/snippets/5/
 def slugify(text, delim=u'-'):
     """Generates an ASCII-only slug."""
     result = []
@@ -15,6 +15,7 @@ def slugify(text, delim=u'-'):
         if word:
             result.append(word)
     return unicode(delim.join(result))
+# end of borrowed snippet
 
 def escape(s):
     return (s.replace('&', '&amp;')
