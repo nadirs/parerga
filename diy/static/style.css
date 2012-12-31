@@ -255,8 +255,9 @@ ul {
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 4px;
     margin: auto;
-    padding: 20px;
-    width: 400px;
+    margin-top: 40px;
+    padding: 5%;
+    width: 90%;
 }
 
 #logo {
