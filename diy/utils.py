@@ -1,3 +1,4 @@
+# set coding: utf-8
 import codecs, glob, os, re, time
 import db
 import markdown
@@ -59,13 +60,20 @@ class Entry(dict):
     @property
     def short_content(self):
         first_paragraph = self['content'].split('\n\n', 1)[0]
+        first_paragraph = first_paragraph.replace('  ', ' ')
+
         words = (first_paragraph).split(' ')
         if len(words) >= 30:
             result = ' '.join(words[:30])
         else:
             result = first_paragraph
-        result = result.rstrip('.') + '...'
-        return u"**{}**. {}".format(self['date'], result)
+        #TODO find a better way to strip punctuation
+        result = result.rstrip('.')
+        result = result.rstrip(',')
+        result = result.rstrip(';')
+        result = result.rstrip(':')
+        result += '...'
+        return u"*{}* ‒ {}".format(self['date'], result)
 
     @property
     def short_content_html(self):
