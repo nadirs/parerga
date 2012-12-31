@@ -77,9 +77,12 @@
     {% block footer %}
         <section class="center" style="width:600px;margin:auto;">
             <hr />
-            <div class="cclicense"><sub>
-                <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Parerga</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Nadir Sampaoli</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="parerga-nadir.rhcloud.com" rel="dct:source">parerga-nadir.rhcloud.com</a>.
-        </sub></div><p>~~~</p>
+            <div class="cclicense">
+                <sub>
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+                    <br /><span>Parerga by <a href="{{url_for("about")}}">Nadir Sampaoli</a>.</span>
+                </sub>
+            </div>
             <p><sub>
                 Developed with <a href="http://flask.pocoo.org/">Flask</a>
         </sub></p>
