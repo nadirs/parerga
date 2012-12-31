@@ -31,7 +31,7 @@ def index():
 def blog_entry(entry_id):
     try:
         post = utils.Entry(entry_id)
-    except EntryException as e:
+    except utils.EntryException as e:
         abort(404)
     return render_template("entry.html", **locals())
 
