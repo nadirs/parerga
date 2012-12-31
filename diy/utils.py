@@ -1,4 +1,4 @@
-import codecs, glob, os, re
+import codecs, glob, os, re, time
 import db
 import markdown
 from flask import Markup
@@ -38,6 +38,9 @@ def get_all_tags():
         tags.update(entry['tags'])
     return sorted(tags)
 
+def prettify_time(time_param):
+    return time.strftime("%d %b. %Y", time_param)
+
 class EntryException(Exception):
     pass
 
@@ -46,7 +49,7 @@ class Entry(dict):
         if entry_id not in db.get_all_entry_ids():
             raise EntryException("entry {} does not exist".format(entry_id))
         self['id'] = entry_id
-        self['date'] = db.get_entry_date(entry_id)
+        self['date'] = prettify_time(db.get_entry_date(entry_id))
         self['tags'] = []
         self['title'] = ""
         path = db.get_entry_path(entry_id)
@@ -62,7 +65,7 @@ class Entry(dict):
         else:
             result = first_paragraph
         result = result.rstrip('.') + '...'
-        return u"*{}*. {}".format(self['date'], result)
+        return u"**{}**. {}".format(self['date'], result)
 
     @property
     def short_content_html(self):
