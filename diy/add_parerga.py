@@ -4,8 +4,9 @@ import os
 import sys
 import db
 usage = '''usage:
-    {} <entry>...
-'''.format(__file__)
+    {} add <entry>...
+    {} initdb
+'''.format(__file__, __file__)
 
 def add_entries(entries):
     ids = []
@@ -30,7 +31,7 @@ if __name__ == '__main__':
     if len(args) > 0:
         if args[0] == 'add':
             try_add(args[1:])
-        elif args[0] == 'init_db':
+        elif args[0] == 'initdb':
             init_db()
         else:
             print(usage)
