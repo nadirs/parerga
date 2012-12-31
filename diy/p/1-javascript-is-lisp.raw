@@ -1,0 +1,109 @@
+title: Rethinking Javascript
+tags: javascript, functional
+
+
+It turns out Javascript is not that ugly language you have to use to make your website look better than some 90s archelogical relic. It's elegant and powerful.  
+In fact, *«Javascript is Lisp... in C clothing»* (actual words by Douglas Crockford, someone who knows his Javascript skills).
+
+Anyway, first things first.
+
+I recently started gathering resources about Javascript, because we all know it's the next (well, it's actually the current!) big thing.
+
+Some experienced developer noted, and I'm talking particularly about Douglas Crockford, that is common practice to start using Javascript right away without proper studying or at least some preparatory reading, and most importantly, without an advisable mindset. The mindset you usually have when you first approach new languages (say Assembly or C or Python, for instance).  
+I barely saved myself from that dark cliff, luckily. My first for-practice website was a classic [LAMP][lamp] project with a little interaction with Google Maps' APIs and a few Ajax effects.
+But even that is regrettable ([it could happen to you!][trumanshow] And on some serious project instead of a throwaway one), once you start figure out what kind of language Javascript really is.
+
+[lamp]: http://en.wikipedia.org/wiki/LAMP_(software_bundle) "Wikipedia's article about LAMP"
+[trumanshow]: http://25.media.tumblr.com/tumblr_lkzwa1YcBA1qat8sbo1_500.jpg "It could happen to you!"
+
+## Some links
+Before writing down some notes about what I think I've figured out so far about Javascript, I'm better off listing some resources I found *formative*:
+
+ - [**Javascript: The Good Parts**][ytgoodparts]. It's an insight of Yahoo expert Douglas Crockford about what features you should avoid and what features you should take advantage of in order to use the language the way it was meant to.
+ - [**Crockford's website**][crockford]. This place contains a wealth of information about many aspects of Javascript programming. Definitely one of the most useful resources gathering out there.
+ - [**JSLint**][jslint]. This website, another idea of Crockford for getting rid of Javascript *bad parts*, offers a useful service: following the purpose of the original [lint][lint]
+ - [**10 things I learned from the jQuery source**][paulirish], by Paul Irish. A very enlightening trip through the patterns developed in jQuery, showing how Javascript, if done right, can be a nice experience and lead to elegance, instead of causing you headaches and nightmares. *Also, slightly unrelated, but not less useful (at least for me) this video showed me how to delve into a complex code base without trying to fit everything into my skull at once, and to learn each piece of information by isolating its single aspects and playing around with the most relevant.*
+ - [**John Resig's Tutorial**][resigtutorial]. The original creator of jQuery guides you through the ins and outs of the language, from the basics up until the advanced concepts.
+ - [**Google Tech Talk**][miskohevery]. An interesting lecture by Misko Hevery, a Java (rather than Javascript) guru. You might notice, in the way he approaches several issues about Javascript features, he sometimes tries to write Java into Javascript, ending up showing as an alternative solution one that is often the idiomatic way to do it. I found them pretty interesting anyway, as they led me to give a shot at the examples offered and, consequently, playing around more with some corner cases (which are still a prominent aspect of the language architecture).
+ - [**Javascript 1.4 shell**][jsshell], a useful sandbox to follow along the previous tutorials or to play around in general with the language.
+
+[azgoodparts]: http://www.amazon.com/gp/product/0596517742 "Javascript: "The Good Parts" book"
+[ytgoodparts]: http://www.youtube.com/watch?v=hQVTIJBZook "Javascript: "The Good Parts" video lecture"
+[crockford]: http://javascript.crockford.com/ "Crockford's website"
+[jslint]: http://jslint.com/ "Javascript code checker"
+[paulirish]: http://vimeo.com/12529436 "10 things I learned from the jQuery source"
+[resigtutorial]: http://ejohn.org/apps/learn/ "Learning advanced Javascript"
+[ytgoodparts]: http://www.youtube.com/watch?v=hQVTIJBZook "Javascript: The Good Parts"
+[miskohevery]: http://www.youtube.com/watch?v=ljNi8nS5TtQ "Introduction to JavaScript and Browser DOM"
+[jsshell]: http://www.squarefree.com/shell/shell.html "Javascript 1.4 shell"
+
+## Prototypes, not Classes
+The most distinctive OO aspect of Javascript is its prototypal orientation (as opposed to the classical one you find in languages like Python, C# or Java). This means that when you define a class it is in fact an object, rather than a (forgive the bad wording) model from which instantiating variables.
+
+As a consequence, inheritance works by means of copying the original object and extending it in the newly created object, rather than by subclassing the parent. Notice how a distinction rises between the classical parent-child inheritance and the prototypal inheritance where you sort of create clones of existing objects (which become prototypes of the new ones) and dynamically extend their functionalities.
+
+## Closures and Lambdas
+The most powerful aspect of the language, since it has a rather strong functional orientation, is closures. What is a closure? From [wikipedia][closure]:
+
+> **Closure.** _a function or reference to a function together with a referencing environment—a table storing a reference to each of the non-local variables (also called free variables) of that function. A closure—unlike a plain function pointer—allows a function to access those non-local variables even when invoked outside of its immediate lexical scope._
+
+This feature, associated with the scope management of Javascript (and its unpleasant tendency to clutter global scope), offers a wide range of powerful possibilities. One of the typical examples is the one I call *Pseudo Class Pattern*:
+
+    :::javascript
+    function PseudoClass() {
+        this.publicParam = 42
+        var privateParam = "Hello"
+
+        this.getPrivateParam = function () {
+            return privateParam
+        }
+
+        return this
+    }
+
+    // instantiate a PseudoClass object
+    var hitch = new PseudoClass()
+
+    hitch.getPrivateParam() // "Hello"
+    hitch.privateParam // undefined
+
+
+You define your class as a function, inside of which you can have both public and private fields and methods. Members defined attaching them to the `this` identifier are publicly accessible (i.e. outside of the pseudo-class definition), while local variables (defined using `var`) clearly are not.  
+As you can see in the example I used a lambda (or anonymous function) to define the closure that works as instance method.
+
+*Note:* instantiating functions the way I did in the closure example can be detrimental because each time you create a new instance using a lambda you create a new function, instead of reusing the same (unless some optimization is made by the interpreter, which probably isn't). Here's an alternative solution that preserves the private/public distinction of the first example and I'm pretty positive it solves the function duplication issue:
+
+    :::javascript
+    function PseudoClass() {
+        this.publicParam = 42
+        var privateParam = "Hello"
+
+        function privateFunc() {
+            return privateParam
+        }
+
+        this.getPrivateParam = privateFunc
+
+        return this
+    }
+
+You would still have different references for each instance:
+
+    :::javascript
+    var x = new PseudoClass()
+    var y = new PseudoClass()
+
+    x.getPrivateParam === y.getPrivateParam // false
+
+
+but they *should* all point to the same function definition.
+
+[closure]: http://en.wikipedia.org/wiki/Closure_(computer_science) "Closure at Wikipedia"
+
+## Last Thoughts
+Once you learn to avoid the pitfalls that Javascript slaps in your face, it really is a nice language.  
+The only remaining feature that I still dislike is the weak typing. Maybe I'm still a bit closed-minded, coming from Python and C# (two strongly typed languages). Though, considering that the common advice is to avoid the "type-coercitive" comparators (`==`, `!=`) in favor of the non-coercitive ones (`===`, `!==`), I don't seem to be the only one that would prefer a more disciplined approach towards managing types.
+
+I've only started scraping the surface of what probably is the currently most widespread programming language (at least in the Open Source world; just look at [Github's statistics][github]!). Thus, please feel free to contribute this article with corrections, if you find I mis-explained some concepts, or just to suggest some more useful resources.
+
+[github]: https://github.com/languages "Languages at Github"
