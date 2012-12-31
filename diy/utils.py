@@ -38,10 +38,13 @@ def get_all_tags():
         tags.update(entry['tags'])
     return sorted(tags)
 
+class EntryException(Exception):
+    pass
+
 class Entry(dict):
     def __init__(self, entry_id, debug=False):
         if entry_id not in db.get_all_entry_ids():
-            raise ValueError("entry {} does not exist".format(entry_id))
+            raise EntryException("entry {} does not exist".format(entry_id))
         self['id'] = entry_id
         self['date'] = db.get_entry_date(entry_id)
         self['tags'] = []
@@ -59,7 +62,7 @@ class Entry(dict):
         else:
             result = first_paragraph
         result = result.rstrip('.') + '...'
-        return "*{}*. {}".format(self['date'], result)
+        return u"*{}*. {}".format(self['date'], result)
 
     @property
     def short_content_html(self):
