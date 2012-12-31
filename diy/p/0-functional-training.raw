@@ -1,6 +1,6 @@
 title: Functional training
 date: 25 Oct. 2012
-tags: code, sicp, functional, scheme
+tags: sicp, functional
 
 
 A while ago I had the chance to incept some aspects of functional programming into the C# code I was writing (mostly passing around functions as [first class citizens](http://en.wikipedia.org/wiki/First-class_citizen)).
