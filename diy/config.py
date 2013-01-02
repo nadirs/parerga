@@ -1,5 +1,5 @@
-#!/usr/bin/env python
 # -*- set coding: utf-8 -*-
+
 import os
 
 # directories constants
