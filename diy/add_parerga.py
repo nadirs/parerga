@@ -3,7 +3,7 @@
 
 import os
 import sys
-import db
+from parerga import db
 usage = '''usage:
     {} add <entry>...
     {} initdb
