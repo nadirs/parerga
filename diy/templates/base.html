@@ -4,7 +4,7 @@
 {%- endmacro -%}
 {%- macro article_h1(name, link='') -%}
 {% set slug_title = slugify(name) %}
-<h1 class="textshadowlight">
+<h1 id="title" class="textshadowlight">
     {% if link %}
     <a id="{{ slug_title }}" href="{{ link }}#{{ slug_title }}">
     {% endif %}
@@ -42,7 +42,7 @@
 	<![endif]-->
 </head>
 <body>
-    <section id="wrapper" class="shadow">
+    <section id="wrapper">
     <header>
         <section class="center" id="logo">
         <a href="/">
@@ -75,7 +75,7 @@
     </section>
     <footer class="footer">
     {% block footer %}
-        <section class="center" style="width:600px;margin:auto;">
+        <section class="center">
             <hr />
             <div class="cclicense">
                 <sub>
