@@ -7,7 +7,7 @@ from flask import g
 from config import *
 
 def init_db():
-    dest = os.path.join(PARERGA_STATIC_DIR, 'parerga.db')
+    dest = PARERGA_DB
     creation_script = "sqlite3 {} < schema.sql".format(dest)
     os.system(creation_script)
 
