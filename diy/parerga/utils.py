@@ -82,7 +82,7 @@ class Entry(dict):
 
     @property
     def content_html(self):
-        return self.markdown('[TOC]\n' + self['content'])
+        return self.markdown(self['content'])
 
     def markdown(self, content):
         return Markup(markdown.markdown(
