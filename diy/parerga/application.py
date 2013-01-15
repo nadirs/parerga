@@ -11,6 +11,7 @@ import db
 application = Flask(__name__, template_folder=PARERGA_TEMPLATE_DIR)
 app = application
 app.debug = True
+app.root_path = os.path.dirname(app.root_path)
 
 # db managing functions
 app.before_request_funcs.setdefault(None, []).insert(0, db.before_request)
@@ -57,14 +58,6 @@ def favicon():
     resp = make_response(open(os.path.join(PARERGA_STATIC_DIR, "favicon.png")).read())
     resp.content_type = "image/png"
     return resp
-
-@app.route("/static/")
-def static(filename):
-    full_path = os.path.join(PARERGA_STATIC_DIR, filename)
-    resp = make_response(open(full_path).read())
-    resp.content_type = "text/css; charset=utf-8"
-    return resp
-
 
 def all_entries():
     return utils.get_all_entries()
