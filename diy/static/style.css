@@ -94,19 +94,6 @@ img {
     padding: 10px;
 }
 
-#wrapper {
-    background-color: #eee;
-    border: 0;
-    color: #222;
-    font-family: LinLibertine, Georgia, Arial;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: normal;
-    margin: 0 auto;
-    position: relative;
-    width: 800px;
-}
-
 /* CSS3 elements */
 
 nav.index{
@@ -119,10 +106,8 @@ nav li {
 }
 
 article {
-    margin: auto;
     padding: 20px;
     text-align: justify;
-    width: 600px;
 }
 
 article a {
@@ -179,7 +164,7 @@ code {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Fontin, LinLibertine, Georgia;
+    font-family: Fontin, Georgia;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -217,14 +202,20 @@ pre {
     text-align:center;
 }
 
-div.codehilite pre {
-    width: 540px;
+td.code {
+    max-width: 10px;
+    width: 100%;
 }
 
 table {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+table.codehilitetable {
+    max-width: 800px;
+    width: 100%;
 }
 
 table.codehilitetable td.linenos {
@@ -243,6 +234,33 @@ ul {
 
 /* IDs */
 
+#wrapper {
+    background-color: #eee;
+    border: 0;
+    color: #222;
+    font-family: Fontin, Georgia, Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 auto;
+    position: relative;
+    width: 800px;
+}
+
+#content {
+    line-height: 1.2;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#content article {
+    margin: auto;
+    max-width: 800px;
+    padding-left: 20px;
+    width: 80%;
+}
+
 #content img {
 /* boxshadow */
     -webkit-box-shadow:5px 5px 5px 0px rgba(0, 0, 0, 0.2);
@@ -256,8 +274,14 @@ ul {
     border-radius: 4px;
     margin: auto;
     margin-top: 40px;
+    max-width: 800px;
     padding: 5%;
-    width: 90%;
+    width: 80%;
+}
+
+#footer {
+    max-width: 800px;
+    width: 100%;
 }
 
 #logo {
@@ -275,12 +299,18 @@ ul {
     text-shadow: 1px 0px rgba(0, 0, 0, 0.2);
 }
 
+#title {
+}
+
 /* Classes*/
+
 .article_date {
+    color: #100;
+    float: left;
     position: relative;
-    float: right;
-    bottom: -24px;
-    padding-right: 5px;
+    text-align: center;
+    top: -8px;
+    width: 100%;
 }
 
 .button {
@@ -353,7 +383,10 @@ ul {
     color: #120;
     display: inline-block;
     font-size: 12px;
+    margin-left: 0;
+    margin-right: auto;
     padding: 5px;
+    position: relative;
 /* CSS3 round borders */
     -moz-radius: 6px 6px;
     -webkit-border-radius: 6px 6px;
