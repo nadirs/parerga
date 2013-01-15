@@ -52,11 +52,19 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/favicon.png")
+@app.route("/static/favicon.png")
 def favicon():
     resp = make_response(open(os.path.join(PARERGA_STATIC_DIR, "favicon.png")).read())
     resp.content_type = "image/png"
     return resp
+
+@app.route("/static/")
+def static(filename):
+    full_path = os.path.join(PARERGA_STATIC_DIR, filename)
+    resp = make_response(open(full_path).read())
+    resp.content_type = "text/css; charset=utf-8"
+    return resp
+
 
 def all_entries():
     return utils.get_all_entries()
