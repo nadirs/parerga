@@ -21,7 +21,7 @@ Before writing down some notes about what I think I've figured out so far about 
 
  - [**Javascript: The Good Parts**][ytgoodparts]. It's an insight of Yahoo expert Douglas Crockford about what features you should avoid and what features you should take advantage of in order to use the language the way it was meant to.
  - [**Crockford's website**][crockford]. This place contains a wealth of information about many aspects of Javascript programming. Definitely one of the most useful resources gathering out there.
- - [**JSLint**][jslint]. This website, another idea of Crockford for getting rid of Javascript *bad parts*, offers a useful service: following the purpose of the original [lint][lint]
+ - [**JSLint**][jslint]. This website, another idea of Crockford for getting rid of Javascript *bad parts*, offers a useful service: following the purpose of the original [Lint][lintwiki].
  - [**10 things I learned from the jQuery source**][paulirish], by Paul Irish. A very enlightening trip through the patterns developed in jQuery, showing how Javascript, if done right, can be a nice experience and lead to elegance, instead of causing you headaches and nightmares. *Also, slightly unrelated, but not less useful (at least for me) this video showed me how to delve into a complex code base without trying to fit everything into my skull at once, and to learn each piece of information by isolating its single aspects and playing around with the most relevant.*
  - [**John Resig's Tutorial**][resigtutorial]. The original creator of jQuery guides you through the ins and outs of the language, from the basics up until the advanced concepts.
  - [**Google Tech Talk**][miskohevery]. An interesting lecture by Misko Hevery, a Java (rather than Javascript) guru. You might notice, in the way he approaches several issues about Javascript features, he sometimes tries to write Java into Javascript, ending up showing as an alternative solution one that is often the idiomatic way to do it. I found them pretty interesting anyway, as they led me to give a shot at the examples offered and, consequently, playing around more with some corner cases (which are still a prominent aspect of the language architecture).
@@ -36,7 +36,7 @@ Before writing down some notes about what I think I've figured out so far about 
 [ytgoodparts]: http://www.youtube.com/watch?v=hQVTIJBZook "Javascript: The Good Parts"
 [miskohevery]: http://www.youtube.com/watch?v=ljNi8nS5TtQ "Introduction to JavaScript and Browser DOM"
 [jsshell]: http://www.squarefree.com/shell/shell.html "Javascript 1.4 shell"
-[lint]: http://en.wikipedia.org/wiki/Lint_(software) Lint page at Wikipedia
+[lintwiki]: http://en.wikipedia.org/wiki/Lint_(software) "Lint page at Wikipedia"
 
 ## Prototypes, not Classes
 The most distinctive OO aspect of Javascript is its prototypal orientation (as opposed to the classical one you find in languages like Python, C# or Java). This means that when you define a class it is in fact an object, rather than a (forgive the bad wording) model from which instantiating variables.
