@@ -36,6 +36,7 @@ Before writing down some notes about what I think I've figured out so far about 
 [ytgoodparts]: http://www.youtube.com/watch?v=hQVTIJBZook "Javascript: The Good Parts"
 [miskohevery]: http://www.youtube.com/watch?v=ljNi8nS5TtQ "Introduction to JavaScript and Browser DOM"
 [jsshell]: http://www.squarefree.com/shell/shell.html "Javascript 1.4 shell"
+[lint]: http://en.wikipedia.org/wiki/Lint_(software) Lint page at Wikipedia
 
 ## Prototypes, not Classes
 The most distinctive OO aspect of Javascript is its prototypal orientation (as opposed to the classical one you find in languages like Python, C# or Java). This means that when you define a class it is in fact an object, rather than a (forgive the bad wording) model from which instantiating variables.
