@@ -154,6 +154,7 @@ a:hover {
 }
 
 blockquote {
+    font-family: georgia;
     margin: 10px 40px 10px 40px;
 }
 
@@ -161,6 +162,10 @@ code {
     color: #363;
     font-family: Consolas, monospace;
     font-size: 12px;
+}
+
+em {
+    font-family: georgia;
 }
 
 h1, h2, h3, h4, h5, h6 {
