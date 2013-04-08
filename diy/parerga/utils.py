@@ -87,7 +87,7 @@ class Entry(dict):
     def markdown(self, content):
         return Markup(markdown.markdown(
                 content,
-                ['codehilite(force_linenos=True)',
+                ['codehilite',
                  'headerid',
                  'toc(title=Table Of Contents, anchorlink=True)']))
 
