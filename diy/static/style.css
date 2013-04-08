@@ -62,7 +62,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    border-bottom: 0.1rem solid #888;
+    border-bottom: 0.1rem solid rgba(100,100,100,0.2);
     margin-top: 2rem;
     margin-bottom: 1rem;
     padding-bottom: 0.2rem;
@@ -72,6 +72,14 @@ h2, h3 {
     margin-top: 2rem;
     margin-bottom: 0.5rem;
     padding-bottom: 0.1rem;
+}
+
+hr {
+    color: rgba(100,100,100,0.2);
+    background-color: rgba(100,100,100,0.2);
+    border: 0;
+    height: 0.1rem;
+    margin: auto 2rem;
 }
 
 img {
