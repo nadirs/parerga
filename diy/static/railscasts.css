@@ -69,9 +69,10 @@
 .vi { color: #FFC66D; background-color: #2B2B2B } /* Name.Variable.Instance */
 .il { color: #A5C261; background-color: #2B2B2B } /* Literal.Number.Integer.Long */
 
-.codehilitetable pre {
+.codehilite pre {
     background-color: #2b2b2b;
-    border: 1px solid #444;
+    border: 2px solid transparent;
+    border-color: #000 transparent transparent #000;
     margin-left: 0;
     margin-right: 0;
 }
@@ -81,6 +82,12 @@
     color: #e6e1dc;
     margin-right: 4px;
 }
+.codehilite pre {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
 .code .codehilite pre {
     -moz-border-radius: 0px 6px 6px 0px;
     border-radius: 0px 6px 6px 0px;

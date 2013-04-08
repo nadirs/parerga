@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block container %}
 <section id="content">
-{{ article_h1("Index")}}
+{{ title_h1("Index")}}
 {% for post in posts|reverse %}
-    {{ preview_post_short(post) }}
+    <section class="short_entry badge button-small">{{ preview_post_short(post) }}</section>
 {% endfor %}
 </section>
 {% endblock %}

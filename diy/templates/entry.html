@@ -4,15 +4,17 @@
 {% endblock %}
 {% block container %}
 <section id="content">
-    {{ article_h1(post.title, link=("/"~post.id~"/")) }}
+    {{ article_h1(post.title, link=("/"~post.id~"/"), classes="textshadowlight") }}
     <section class="taglist">
         <sup>
             {%- for tag in post.tags -%}
-            <a href="/tag/{{ tag }}/">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+                <a href="/tag/{{ tag }}/" class="button button-small">{{ tag }}</a>{% if not loop.last %} {% endif %}
             {%- endfor -%}
         </sup>
     </section>
-    <div class="article_date">{{ post.date }}</div>
+    <div class="article_date_container">
+        <div class="article_date badge button-small">{{ post.date }}</div>
+    </div>
     <article class="article">
     {{ post.content_html }}
     </article>

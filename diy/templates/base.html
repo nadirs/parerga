@@ -2,39 +2,51 @@
 {%- macro word_first_char_red(word, size='121%') -%}
 <span class="first_char" style="font-size:{{size}};">{{ word[0] }}</span>{{ word[1:] }}
 {%- endmacro -%}
-{%- macro article_h1(name, link='') -%}
+
+{%- macro title_h1(name, link='', classes='textshadowlight') -%}
 {% set slug_title = slugify(name) %}
-<h1 id="title" class="textshadowlight">
-    {% if link %}
-    <a id="{{ slug_title }}" href="{{ link }}#{{ slug_title }}">
-    {% endif %}
-    {{ word_first_char_red(name) }}{% if link %}</a>{% endif %}
+<h1 id="title" class="{{ classes }}">
+    <a id="{{ slug_title }}" href="{{ link }}">
+    {{ word_first_char_red(name) }}</a>
 </h1>
 {%- endmacro -%}
+
+{%- macro article_h1(name, link='', classes='textshadowlight') -%}
+{% set slug_title = slugify(name) %}
+<h1 id="title" class="{{ classes }}">
+    <a id="{{ slug_title }}" href="{{ link }}#{{ slug_title }}">
+    {{ word_first_char_red(name) }}</a>
+</h1>
+{%- endmacro -%}
+
+{%- macro linkify(text, href, classes="") -%}
+    <a href="{{ href }}" class="{{ classes }}">{{ text }}</a>
+{%- endmacro -%}
+
 {%- macro preview_post_short(post, tags_without_link=[]) -%}
-    <h3 class="textshadowlight"><a href="/{{ post.id}}/">{{ post.title }}</a></h3>
+    <h3 class="textshadowlight redlight"><a href="/{{ post.id}}/">{{ post.title }}</a></h3>
     <div><sup>
         {%- for tag in post.tags %}
-        {% if tag not in tags_without_link %}<a href="/tag/{{ tag }}/">{% endif -%}
-            {{ tag }}
-        {%- if tag not in tags_without_link %}</a>{% endif -%}
-        {%- if not loop.last %},{% endif -%}
-        {% endfor %}</sup>
-    </div>
+            {% if tag not in tags_without_link %}{{ linkify(tag, href="/tag/" + tag + "/", classes="button button-small") }}
+            {% else %}<span class="badge button-small">{{ tag }}</span>{% endif -%}
+            {%- if not loop.last %} {% endif -%}
+        {% endfor %}
+    </sup></div>
     {{ post.short_content_html }}
-    <section class="link_more"><a href="/{{ post.id}}/">more...</a></section>
+    <section class="link_more"><a class="button button-small" href="/{{ post.id}}/">➥</a></section>
 {%- endmacro -%}
 {# ---------------------------- END MACROS -------------------------------- #}
 {%- set sitename = "Parerga" -%}
+{%- set motto = "a blog about learning software craftmanship" -%}
 <!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="{{sitename}}, a blog about learning software craftmanship"/>
+    <meta name="description" content="{{sitename}}, {{motto}}"/>
     <title>{% block title -%}{{ sitename }}{%- endblock %}</title>
-    <!--[ don't use CSS until HTML is complete]-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href={{ url_for("static", filename="style.css") }} />
-    <link rel="stylesheet" href={{ url_for("static", filename="blueshift.css") }} />
+    <link rel="stylesheet" href={{ url_for("static", filename="pygments.css") }} />
     <!---->
     <link rel="shortcut icon" href="{{ url_for("static", filename="favicon.png") }}" />
     <!--[if lt IE 9]>
@@ -42,12 +54,13 @@
 	<![endif]-->
 </head>
 <body>
-    <section id="wrapper" class="shadow">
+    <section id="wrapper">
     <header>
         <section class="center" id="logo">
         <a href="/">
-            {{ word_first_char_red('Parerga', '80px') }}
+            {{ word_first_char_red('Parerga') }}
         </a>
+        <p id="motto">{{ motto }}</p>
         </section>
         {% block header %}
         <nav class="index">
@@ -84,7 +97,7 @@
                 </sub>
             </div>
             <p><sub>
-                Developed with <a href="http://flask.pocoo.org/">Flask</a>
+                    Developed in <a href="http://python.org/">Python</a> (and a bit of salt).
         </sub></p>
         </section>
     {% endblock %}

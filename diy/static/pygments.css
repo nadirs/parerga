@@ -69,18 +69,20 @@
 .vi { color: #000000 } /* Name.Variable.Instance */
 .il { color: #990000 } /* Literal.Number.Integer.Long */
 
-.codehilitetable pre {
-    background-color: #ddd;
-    border: 1px solid #aab;
+pre {
+    background-color: rgba(160,160,160, 0.1);
+    border: 1px solid rgba(160,160,160, 0.6);
     margin-left: 0;
     margin-right: 0;
 }
+
 .linenos pre {
     -moz-border-radius: 6px 0px 0px 6px;
     border-radius: 6px 0px 0px 6px;
     color: #000;
     margin-right: 4px;
 }
+
 .code .codehilite pre {
     -moz-border-radius: 0px 6px 6px 0px;
     border-radius: 0px 6px 6px 0px;

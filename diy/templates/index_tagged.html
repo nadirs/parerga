@@ -3,13 +3,13 @@
 {% block container %}
     <section id="content">
     {% if posts %}
-    {{ article_h1("Search results")}}
-        <p>Entries tagged <em>«{{ tag }}»</em></p>
+    {{ title_h1("Search results") }}
+        <p>Entries tagged <em class="badge button-small">{{ tag }}</em></p>
         {% for post in posts|reverse %}
-        {{ preview_post_short(post, [tag]) }}
+            <section class="short_entry badge button-small">{{ preview_post_short(post, [tag]) }}</section>
         {% endfor %}
     {% else %}
-    {{ article_h1("Tag not found")}}
+    {{ title_h1("Tag not found")}}
         <p>No entries were found for the corresponding tag '{{ tag }}'.
             Did you mean <a href="/tag/">something else</a>?</p>
     {% endif %}
