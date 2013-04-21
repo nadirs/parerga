@@ -1,4 +1,4 @@
-# set coding: utf-8
+# -*- set coding: utf-8 -*-
 
 import codecs, glob, os, re, time
 import db

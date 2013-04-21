@@ -4,6 +4,8 @@
 import os
 import sys
 from parerga import db
+
+
 usage = '''usage:
     {} add <entry>...
     {} initdb
