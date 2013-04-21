@@ -1,4 +1,12 @@
 {# ---------------------------- MACROS ------------------------------------ #}
+{%- macro article_url(post) -%}
+/articles/{{ post.id}}/{{ slugify(post.title) }}
+{%- endmacro -%}
+
+{%- macro tag_url(tag) -%}
+{{ url_for('index_tagged', tag=tag) }}
+{%- endmacro -%}
+
 {%- macro word_first_char_red(word, size='121%') -%}
 <span class="first_char" style="font-size:{{size}};">{{ word[0] }}</span>{{ word[1:] }}
 {%- endmacro -%}
@@ -24,16 +32,16 @@
 {%- endmacro -%}
 
 {%- macro preview_post_short(post, tags_without_link=[]) -%}
-    <h3 class="textshadowlight redlight"><a href="/{{ post.id}}/">{{ post.title }}</a></h3>
+    <h2 class="textshadowlight"><a href="{{ article_url(post) }}">{{ word_first_char_red(post.title) }}</a></h2>
     <div><sup>
         {%- for tag in post.tags %}
-            {% if tag not in tags_without_link %}{{ linkify(tag, href="/tag/" + tag + "/", classes="button button-small") }}
+            {% if tag not in tags_without_link %}{{ linkify(tag, href=tag_url(tag), classes="button button-small") }}
             {% else %}<span class="badge button-small">{{ tag }}</span>{% endif -%}
             {%- if not loop.last %} {% endif -%}
         {% endfor %}
     </sup></div>
     {{ post.short_content_html }}
-    <section class="link_more"><a class="button button-small" href="/{{ post.id}}/">➥</a></section>
+    <section class="link_more"><a class="button button-small" href="{{ article_url(post) }}">➥</a></section>
 {%- endmacro -%}
 {# ---------------------------- END MACROS -------------------------------- #}
 {%- set sitename = "Parerga" -%}
@@ -67,7 +75,7 @@
         <ul>
             {% set navigation = [
                     ("/", "index"),
-                    ("/tag/", "tags"),
+                    ("/tags/", "tags"),
                     ("/about/", "about"),
                 ] %}
             {%- for href, caption in navigation -%}
@@ -97,7 +105,7 @@
                 </sub>
             </div>
             <p><sub>
-                    Developed in <a href="http://python.org/">Python</a> (and a bit of salt).
+                    Developed in <a href="http://python.org/">Python</a> (with a bit of salt).
         </sub></p>
         </section>
     {% endblock %}

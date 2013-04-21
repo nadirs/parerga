@@ -4,7 +4,7 @@
     <section id="content">
             {{ title_h1("Tags")}}
             <p>{% for tag in tags %}
-                    <a href="/tag/{{ tag }}/" class="button button-small">{{ tag }}</a>{% if not loop.last %}&nbsp;{% endif %}
+                    <a href="{{ tag_url(tag) }}" class="button button-small">{{ tag }}</a>{% if not loop.last %}&nbsp;{% endif %}
             {% endfor %}</p>
     </section>
 {% endblock %}

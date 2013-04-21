@@ -3,7 +3,8 @@
 
 import os, glob
 import markdown
-from flask import Flask, Markup, render_template, url_for, make_response, abort
+from flask import (Flask, Markup, render_template, url_for, make_response,
+        abort, redirect)
 from config import *
 import utils
 import db
@@ -29,20 +30,24 @@ def index():
     posts = all_entries()
     return render_template("index.html", **locals())
 
-@app.route("/<int:entry_id>/")
-def blog_entry(entry_id):
+@app.route("/articles/<int:entry_id>/")
+@app.route("/articles/<int:entry_id>/<string:entry_title>/")
+def blog_entry(entry_id, entry_title=""):
     try:
         post = utils.Entry(entry_id)
+        expected_title = utils.slugify(post['title'])
+        if entry_title != expected_title:
+            return redirect(url_for('.blog_entry', entry_id=entry_id, entry_title=expected_title))
     except utils.EntryException as e:
         abort(404)
     return render_template("entry.html", **locals())
 
-@app.route("/tag/")
+@app.route("/tags/")
 def index_tags():
     tags = utils.get_all_tags()
     return render_template("index_tags.html", **locals())
 
-@app.route("/tag/<string:tag>/")
+@app.route("/tags/<string:tag>/")
 def index_tagged(tag):
     entries = all_entries()
     posts = [e for e in entries if tag in e['tags']]
