@@ -424,6 +424,11 @@ ul {
     padding: 0.1rem 1.6rem;
 }
 
+.parerga {
+    font-family: LinLibertine;
+    font-size:130%;
+}
+
 .short_entry {
     color: inherit;
     font-style: inherit;
