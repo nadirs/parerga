@@ -64,6 +64,12 @@ def favicon():
     resp.content_type = "image/png"
     return resp
 
+@app.route("/sitemap.xml")
+def sitemap():
+    response = make_response(open(os.path.join(PARERGA_STATIC_DIR, "sitemap.xml")).read())
+    response.headers["Content-Type"] = "application/xml"
+    return response
+
 def all_entries():
     return utils.get_all_entries()
 
