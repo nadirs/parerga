@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block title %}About - {{ super() }}{% endblock %}
 {% block container %}
-<section>
+<section id="content">
 {{ article_h1("About") }}
-<div id="content">
-<h3>This blog</h3>
+<div class="article">
+<h2>This blog</h2>
 <p>
     I wrote this blog in Python using <a href="http://flask.pocoo.org/">Flask</a>, a micro-framework, and its siblings
     <a href="http://jinja.pocoo.org/">Jinja</a>, a templating engine, and <a href="http://werkzeug.pocoo.org/">Werkzeug</a>, a WSGI utility library.
@@ -24,7 +24,7 @@
     some thoughts and notes about code and software development in general.
 </p>
 
-<h3>Who I am</h3>
+<h2>Who I am</h2>
 <!-- TABLE HORROR -->
 <table><tr><td><p>
     I am a mostly self-taught developer, interested in high- and low-level

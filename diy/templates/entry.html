@@ -8,12 +8,12 @@
     <section class="taglist">
         <sup>
             {%- for tag in post.tags -%}
-                <a href="/tag/{{ tag }}/" class="button button-small">{{ tag }}</a>{% if not loop.last %} {% endif %}
+                <a href="{{ tag_url(tag) }}" class="button button-small">{{ tag }}</a>{% if not loop.last %} {% endif %}
             {%- endfor -%}
         </sup>
     </section>
     <div class="article_date_container">
-        <div class="article_date badge button-small">{{ post.date }}</div>
+        <time class="article_date badge button-small">{{ post.date }}</time>
     </div>
     <article class="article">
     {{ post.content_html }}

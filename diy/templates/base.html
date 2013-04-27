@@ -3,6 +3,9 @@
 /articles/{{ post.id}}/{{ slugify(post.title) }}
 {%- endmacro -%}
 
+{% macro tag_widget(tag) %}
+    <a href="{{ tag_url(tag) }}" class="tag button button-small">{{ tag }}</a>
+{%- endmacro -%}
 {%- macro tag_url(tag) -%}
 {{ url_for('index_tagged', tag=tag) }}
 {%- endmacro -%}
@@ -40,8 +43,10 @@
             {%- if not loop.last %} {% endif -%}
         {% endfor %}
     </sup></div>
-    {{ post.short_content_html }}
-    <section class="link_more"><a class="button button-small" href="{{ article_url(post) }}">➥</a></section>
+    <section>
+        <time>{{ post.date }}</time>
+        {{ post.short_content_html }}
+    </section>
 {%- endmacro -%}
 {# ---------------------------- END MACROS -------------------------------- #}
 {%- set sitename = "Parerga" -%}
@@ -75,9 +80,9 @@
         <nav class="index">
         <ul>
             {% set navigation = [
-                    ("/", "index"),
-                    ("/tags/", "tags"),
-                    ("/about/", "about"),
+            ("/", "index"),
+                    (url_for("index_tags"), "tags"),
+                    (url_for("about"), "about")
                 ] %}
             {%- for href, caption in navigation -%}
             <li>
@@ -101,9 +106,13 @@
             <hr />
             <div class="cclicense">
                 <sub>
-                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
-                    <br /><span><span class="parerga"><span class="first_char">P</span>arerga</span> by <a href="{{url_for("about")}}">Nadir Sampaoli</a> is developed in <a href="http://python.org/">Python</a> (with a bit of salt)</span>
-                    <br /><a class="badge button-small" rel="sitemap" href="{{url_for("sitemap")}}">Sitemap</a>
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a>
+                    <br /><span>© 2013 ~ <a href="{{url_for("about")}}" rel="author">Nadir Sampaoli</a></span>
+                    <br />
+                    {%- for page in ["sitemap"] -%}{# TODO: for page in "sitemap", "feed" #}
+                        <a class="button button-small" href="{{ url_for(page) }}">{{ page|e }}</a>
+                    {%- endfor -%}
+
                 </sub>
         </section>
     {% endblock %}

@@ -74,7 +74,7 @@ class Entry(dict):
         result = result.rstrip(';')
         result = result.rstrip(':')
         result += '...'
-        return u"*{}* ‒ {}".format(self['date'], result)
+        return result
 
     @property
     def short_content_html(self):

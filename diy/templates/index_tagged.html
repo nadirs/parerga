@@ -6,7 +6,7 @@
     {{ title_h1("Search results") }}
         <p>Entries tagged <em class="badge button-small">{{ tag }}</em></p>
         {% for post in posts|reverse %}
-            <section class="short_entry badge button-small">{{ preview_post_short(post, [tag]) }}</section>
+            <section class="short_entry">{{ preview_post_short(post, [tag]) }}</section>
         {% endfor %}
     {% else %}
     {{ title_h1("Tag not found")}}
