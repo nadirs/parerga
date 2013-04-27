@@ -444,6 +444,13 @@ ul {
     border-radius: 0.2rem;
 }
 
+.short_entry span.time {
+    float: left;
+    font-family: LinLibertine;
+    font-style: italic;
+    font-weight: bold;
+}
+
 .taglist {
     float: right;
     padding-right: 0.5rem;

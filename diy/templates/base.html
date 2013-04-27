@@ -44,7 +44,7 @@
         {% endfor %}
     </sup></div>
     <section>
-        <time>{{ post.date }}</time>
+        <span class="time"><time>{{ post.date }}</time>&nbsp;&mdash;&nbsp;</span>
         {{ post.short_content_html }}
     </section>
 {%- endmacro -%}
