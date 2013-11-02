@@ -72,32 +72,7 @@ This feature, associated with the scope management of Javascript (and its unplea
 You define your class as a function, inside of which you can have both public and private fields and methods. Members defined attaching them to the `this` identifier are publicly accessible (i.e. outside of the pseudo-class definition), while local variables (defined using `var`) clearly are not.  
 As you can see in the example I used a lambda (or anonymous function) to define the closure that works as instance method.
 
-*Note:* instantiating functions the way I did in the closure example can be detrimental because each time you create a new instance using a lambda you create a new function, instead of reusing the same (unless some optimization is made by the interpreter, which probably isn't). Here's an alternative solution that preserves the private/public distinction of the first example and I'm pretty positive it solves the function duplication issue:
-
-    :::javascript
-    function PseudoClass() {
-        this.publicParam = 42
-        var privateParam = "Hello"
-
-        function privateFunc() {
-            return privateParam
-        }
-
-        this.getPrivateParam = privateFunc
-
-        return this
-    }
-
-You would still have different references for each instance:
-
-    :::javascript
-    var x = new PseudoClass()
-    var y = new PseudoClass()
-
-    x.getPrivateParam === y.getPrivateParam // false
-
-
-but they *should* all point to the same function definition.
+*Note:* instantiating functions the way I did in the closure example can be detrimental because each time you create a new instance using a lambda you create a new function, instead of reusing the same (unless some optimization is made by the interpreter, which probably isn't).
 
 [closure]: http://en.wikipedia.org/wiki/Closure_(computer_science) "Closure at Wikipedia"
 
