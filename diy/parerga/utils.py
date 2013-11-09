@@ -1,9 +1,9 @@
 # -*- set coding: utf-8 -*-
 
 import codecs, glob, os, re, time
-import db
 import markdown
 from flask import Markup
+import db
 
 # Snippet borrowed from: http://flask.pocoo.org/snippets/5/
 _punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
@@ -18,13 +18,6 @@ def slugify(text, delim=u'-'):
             result.append(word)
     return unicode(delim.join(result))
 # end of borrowed snippet
-
-def escape(s):
-    return (s.replace('&', '&amp;')
-             .replace('<', '&lt;')
-             .replace('>', '&gt;')
-             .replace('"', '&quot;')
-             .replace("'", '&#39;'))
 
 def get_all_entries():
     ids = db.get_all_entry_ids()
@@ -107,13 +100,13 @@ class Entry(dict):
             raise LookUpError
 
     def parse_date(self, date):
-        return escape(date.strip())
+        return date.strip()
 
     def parse_tags(self, tags):
         return sorted([tag.strip() for tag in tags.split(',')])
 
     def parse_title(self, title):
-        return escape(title.strip())
+        return title.strip()
 
 if __name__ == '__main__':
     pass
