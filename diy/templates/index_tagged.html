@@ -11,7 +11,7 @@
     {% else %}
     {{ title_h1("Tag not found")}}
         <p>No entries were found for the corresponding tag '{{ tag }}'.
-            Did you mean <a href="/tag/">something else</a>?</p>
+            Did you mean <a href="{{ url_for('index_tags') }}">something else</a>?</p>
     {% endif %}
     </section>
 {% endblock %}
