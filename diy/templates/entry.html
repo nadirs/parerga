@@ -5,6 +5,9 @@
 {% block container %}
 <section id="content">
     {{ article_h1(post.title, link=(article_url(post)), classes="textshadowlight") }}
+    <div class="article_date_container">
+        <time class="article_date badge button-small">{{ post.date }}</time>
+    </div>
     <section class="taglist">
         <sup>
             {%- for tag in post.tags -%}
@@ -12,9 +15,7 @@
             {%- endfor -%}
         </sup>
     </section>
-    <div class="article_date_container">
-        <time class="article_date badge button-small">{{ post.date }}</time>
-    </div>
+    <div class="clearfix"></div>
     <article class="article">
     {{ post.content_html }}
     </article>

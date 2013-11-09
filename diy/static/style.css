@@ -52,6 +52,10 @@
 }
 /* end of custom fonts */
 
+* {
+    box-sizing: border-box;
+}
+
 html {
     background-color: #f8f8e0;
     font-size: 62.5%;
@@ -310,6 +314,10 @@ ul {
 
 /* Classes*/
 
+.clearfix {
+    clear: both;
+}
+
 .article {
     font-size: 1.4rem;
 }
@@ -561,6 +569,11 @@ ul {
     #wrapper > header {
         display: inline-block;
         vertical-align: middle;
+    }
+
+   .article_date {
+       display: block;
+       float: none;
     }
 
     nav li, nav li .button {
