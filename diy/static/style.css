@@ -83,7 +83,7 @@ hr {
 }
 
 img {
-    padding: 1rem;
+    padding: 1rem 0;
 }
 
 /* CSS3 elements */
@@ -103,7 +103,7 @@ nav li {
 }
 
 article {
-    padding: 2rem;
+    padding: 2rem 0;
     text-align: justify;
 }
 
@@ -140,7 +140,7 @@ footer {
     bottom: 0;
     font-style: normal;
     margin: auto;
-    padding: 2rem;
+    padding: 2rem 0;
     text-align: center;
 }
 
@@ -162,7 +162,7 @@ a:hover {
 
 blockquote {
     font-family: georgia;
-    margin: 1rem 4rem 1rem 4rem;
+    margin: 1rem;
 }
 
 code {
@@ -187,7 +187,7 @@ h1 {
 }
 
 nav ul {
-    padding: 0.2rem;
+    padding: 0.2rem 0;
     text-align: center;
 /* CSS3 round borders */
 /*    -moz-radius: 2.2rem;
@@ -208,7 +208,7 @@ pre {
     font-family: Consolas, monospace;
     font-size: 1.2rem;
     overflow: auto;
-    padding: 1rem;
+    padding: 1rem 0;
 }
 
 .linenos pre {
@@ -238,7 +238,7 @@ td, th {
 }
 
 ul {
-    padding-left: 3rem;
+    list-style-position: inside;
     text-align: justify;
 }
 
@@ -251,7 +251,6 @@ ul {
 }
 
 #wrapper {
-/*    background-color: #eee;*/
     border: 0;
     color: #222;
     font-family: "Open Sans", Sans, Verdana, Arial;
@@ -259,16 +258,14 @@ ul {
     font-style: normal;
     font-weight: normal;
     margin: 0 auto;
+    padding: 0 1rem;
     position: relative;
-    min-width: 32rem;
-    max-width: 96rem;
+    max-width: 120rem;
 }
 
 #content {
     line-height: 1.5;
     margin-right: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
 }
 
 #content article {
@@ -283,15 +280,10 @@ ul {
 }
 
 #disqus_thread {
-    background-color: rgba(200, 200, 200, 0.1);
-    border: 0.1rem solid rgba(0, 0, 0, .2);
-    -webkit-border-radius: 0.3rem;
-    -moz-border-radius: 0.3rem;
-    border-radius: 0.3rem;
+    background: none;
+    border: none;
     margin: auto;
-    margin-top: 4rem;
-    padding: 3rem;
-    width: 80%;
+    margin-top: 3rem;
 }
 
 #footer {
@@ -431,6 +423,10 @@ ul {
     text-align: left;
 }
 
+.short_entry p {
+    text-align: justify;
+}
+
 .short_entry.badge {
     background-color: rgba(200,200,200,0.1);
     border-color: rgba(200,200,200,0.4);
@@ -546,13 +542,12 @@ ul {
     #logo {
         font-size: 6rem;
     }
-
     nav li {
         display: inline-block;
     }
 }
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .button, .badge {
         -webkit-border-radius: 0.3rem;
         -moz-border-radius: 0.3rem;
@@ -560,16 +555,17 @@ ul {
         font-size: 1.2rem;
         padding: 0.3rem;
     }
-}
+    #wrapper {
+        text-align: center;
+    }
+    #wrapper > header {
+        display: inline-block;
+        vertical-align: middle;
+    }
 
-@media screen and (max-width: 320px) {
-    .button, .badge {
-        -webkit-border-radius: 0.2rem;
-        -moz-border-radius: 0.2rem;
-        border-radius: 0.2rem;
-        font-size: 1rem;
-        min-width: 3.6rem;
-        padding: 0.3rem;
+    nav li, nav li .button {
+        display: block;
+        font-size: inherit;
     }
 }
 
