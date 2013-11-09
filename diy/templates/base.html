@@ -50,12 +50,11 @@
 {%- endmacro -%}
 {# ---------------------------- END MACROS -------------------------------- #}
 {%- set sitename = "Parerga" -%}
-{%- set motto = ["software craftsmanship", "patchwork"] -%}
 <!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="{{sitename}}, {{motto[0]}} {{motto[1]}}"/>
+    <meta name="description" content="{{sitename}}, technical blog, programming languages, software development, craftsmanship"/>
     <meta name="google-site-verification" content="7yA0f1sLgXjk8IFijWzDwANVtKYcZyfKvINWE5GKJyw" />
     <title>{% block title -%}{{ sitename }}{%- endblock %}</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,300' rel='stylesheet' type='text/css'>
@@ -74,7 +73,6 @@
         <a href="/">
             {{ word_first_char_red('Parerga') }}
         </a>
-        <p id="motto">{{ motto[0] }}<span class="space_motto"> </span>{{ motto[1]}}</p>
         </section>
         {% block header %}
         <nav class="index">

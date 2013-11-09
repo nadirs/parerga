@@ -250,11 +250,6 @@ ul {
     vertical-align: bottom;
 }
 
-#motto {
-    font-family: "Open Sans", Georgia, serif;
-    margin: 0;
-}
-
 #wrapper {
 /*    background-color: #eee;*/
     border: 0;
@@ -552,59 +547,12 @@ ul {
         font-size: 6rem;
     }
 
-    #motto {
-        font-size: 1.3rem;
-        left: 1.5rem;
-        position: relative;
-        top: -2rem;
-    }
-
-    .space_motto {
-        letter-spacing: 3rem;
-    }
-
     nav li {
         display: inline-block;
     }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
-    #logo {
-        font-size: 5rem;
-    }
-
-    #motto {
-        font-size: 1.1rem;
-        left: 1.2rem;
-        position: relative;
-        top: -1.6rem;
-    }
-
-    .space_motto {
-        letter-spacing: 2.5rem;
-    }
-}
-
 @media screen and (min-width: 320px) and (max-width: 480px) {
-    #logo {
-        font-size: 4rem;
-    }
-
-    #title {
-        font-size: 3rem;
-    }
-
-    #motto {
-        font-size: 0.9rem;
-        left: 0.7rem;
-        position: relative;
-        top: -1.4rem;
-    }
-
-    .space_motto {
-        letter-spacing: 1.9rem;
-    }
-
     .button, .badge {
         -webkit-border-radius: 0.3rem;
         -moz-border-radius: 0.3rem;
@@ -615,25 +563,6 @@ ul {
 }
 
 @media screen and (max-width: 320px) {
-/*    #logo {
-        font-size: 3rem;
-    }
-
-    #title {
-        font-size: 2rem;
-    }
-
-    #motto {
-        font-size: 0.7rem;
-        left: 0.4rem;
-        position: relative;
-        top: -1.1rem;
-    }
-
-    .space_motto {
-        letter-spacing: 1.4rem;
-    }
-*/
     .button, .badge {
         -webkit-border-radius: 0.2rem;
         -moz-border-radius: 0.2rem;
