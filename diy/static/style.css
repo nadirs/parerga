@@ -345,6 +345,7 @@ ul {
     color: #222;
     display: inline-block;
     font-family: "Open Sans", Fontin, Georgia, serif;
+    font-size: 1.2rem;
     font-weight: normal;
     margin: 0.2rem;
     min-width: 5rem;
@@ -560,7 +561,6 @@ ul {
         -webkit-border-radius: 0.3rem;
         -moz-border-radius: 0.3rem;
         border-radius: 0.3rem;
-        font-size: 1.2rem;
         padding: 0.3rem;
     }
     #wrapper {
