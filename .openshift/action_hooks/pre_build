@@ -5,7 +5,6 @@
 # could be python, php, ruby, etc.
 if [ ! -d $OPENSHIFT_DATA_DIR/bin ]; then
     PYTHON_VERS="3.3.2"
-    PIP_VERS="1.4.1"
 
     # install python on builder gear
     cd $OPENSHIFT_TMP_DIR
@@ -17,25 +16,20 @@ if [ ! -d $OPENSHIFT_DATA_DIR/bin ]; then
 
     export PATH=$OPENSHIFT_DATA_DIR/bin:$PATH
 
-    # install setuptools
-    cd $OPENSHIFT_TMP_DIR
-    wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
-    python ez_setup.py --user
+    # symlink python -> python3
+    ln -s $OPENSHIFT_DATA_DIR/python{3,}
 
-    # install pip
     cd $OPENSHIFT_TMP_DIR
-    wget https://pypi.python.org/packages/source/p/pip/pip-${PIP_VERS}.tar.gz
-    tar zxf pip-${PIP_VERS}.tar.gz
-    cd pip-${PIP_VERS}
-    python setup.py install
-
+    # install setuptools and pip
+    wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
+    wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py -O - | python
+    pip install --upgrade setuptools
     # install uWSGI
-    cd $OPENSHIFT_TMP_DIR
     pip install uwsgi
 
     # cleanup
     cd $OPENSHIFT_TMP_DIR
     rm -rf Python-${PYTHON_VERS}.tar.bz2
     rm -rf ez_setup.py
-    rm -rf pip-${PIP_VERS}.tar.gz
+    rm -rf get-pip.py
 fi
