@@ -2,8 +2,7 @@
 # -*- set coding: utf-8 -*-
 
 import os, glob
-import markdown
-from flask import (Flask, Markup, render_template, url_for, make_response,
+from flask import (Flask, Markup, render_template, url_for, send_from_directory,
         abort, redirect)
 from config import *
 import utils
@@ -60,9 +59,8 @@ def about():
 
 @app.route("/static/favicon.png")
 def favicon():
-    resp = make_response(open(os.path.join(PARERGA_STATIC_DIR, "favicon.png")).read())
-    resp.content_type = "image/png"
-    return resp
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+            'favicon.png', mimetype='image/png')
 
 @app.route("/sitemap.xml")
 def sitemap():

@@ -9,15 +9,13 @@ import db
 _punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
 
 
-def slugify(text, delim=u'-'):
+def slugify(text, delim='-'):
     """Generates an ASCII-only slug."""
     result = []
     for word in _punct_re.split(text.lower()):
-        word = word.encode('utf-8')#translit/long')
         if word:
             result.append(word)
-    return unicode(delim.join(result))
-# end of borrowed snippet
+    return delim.join(result)
 
 def get_all_entries():
     ids = db.get_all_entry_ids()
@@ -62,12 +60,10 @@ class Entry(dict):
         else:
             result = first_paragraph
         #TODO find a better way to strip punctuation
-        result = result.rstrip('.')
-        result = result.rstrip(',')
-        result = result.rstrip(';')
-        result = result.rstrip(':')
-        result += '...'
-        return result
+        return (result.rstrip('.')
+                .rstrip(',')
+                .rstrip(';')
+                .rstrip(':') + '...')
 
     @property
     def short_content_html(self):
